@@ -178,7 +178,7 @@ public class QuanLySach {
                 }
                 found = true;
             } else if (danhSachTaiLieu[i] instanceof TapChi && loai.equalsIgnoreCase("tapchi")) {
-                System.out.println("\t--->Tài liệu Báo:");
+                System.out.println("\t--->Tai Lieu Tap Chi:");
                 boolean foundTapChi = false;
                 for (int j = 0; j < tapChi.length; j++) {
                     if (tapChi[j] == danhSachTaiLieu[i]) {
