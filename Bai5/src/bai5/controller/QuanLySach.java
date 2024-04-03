@@ -154,11 +154,11 @@ public class QuanLySach {
         boolean found = false;
         for (int i = 0; i < danhSachTaiLieu.length; i++) {
             if (danhSachTaiLieu[i] instanceof Sach && loai.equalsIgnoreCase("sach")) {
-                System.out.println("\t--->Tài liệu Sách:");
+                System.out.println("\t--->Tai lieu Sach:");
                 hienThiTaiLieuSach(i);
                 found = true;
             } else if (danhSachTaiLieu[i] instanceof Bao && loai.equalsIgnoreCase("bao")) {
-                System.out.println("\t--->Tài liệu Báo:");
+                System.out.println("\t--->Tai lieu Bao:");
                 boolean foundBao = false;
                 for (int j = 0; j < bao.length; j++) {
                     if (bao[j] == danhSachTaiLieu[i]) {
@@ -174,12 +174,29 @@ public class QuanLySach {
                     }
                 }
                 if (!foundBao) {
-                    System.out.println("Không tìm thấy tài liệu báo tương ứng.");
+                    System.out.println("Khong tim thay bao nao tuong ung");
                 }
                 found = true;
             } else if (danhSachTaiLieu[i] instanceof TapChi && loai.equalsIgnoreCase("tapchi")) {
-                System.out.println("\t--->Tài liệu Tạp Chí:");
-                hienThiTaiLieuTapChi(i);
+                System.out.println("\t--->Tài liệu Báo:");
+                boolean foundTapChi = false;
+                for (int j = 0; j < tapChi.length; j++) {
+                    if (tapChi[j] == danhSachTaiLieu[i]) {
+                        System.out.println("\t\tThong Tin Tai Lieu thu " + (i + 1) + ":");
+                        System.out.println("\t\tMa Tai Lieu: " + danhSachTaiLieu[i].getMaTaiLieu());
+                        System.out.println("\t\tTen Nha Xuat Ban: " + danhSachTaiLieu[i].getTenNhaXuatBan());
+                        System.out.println("\t\tSo Ban Phat Hanh: " + danhSachTaiLieu[i].getSoBanPhatHanh());
+
+                        System.out.println("\t\tThong tin Tap Chi thu " + (j + 1) + ":");
+                        System.out.println("\t\tSo phat hanh: " + tapChi[j].getSoPhatHanh());
+                        System.out.println("\t\tThang phat hanh: " + tapChi[j].getThangPhatHanh());
+                        foundTapChi = true;
+                        break;
+                    }
+                }
+                if (!foundTapChi) {
+                    System.out.println("Khong tim thay tap chi nao tuong ung");
+                }
                 found = true;
             }
         }
@@ -193,16 +210,16 @@ public class QuanLySach {
         boolean found = false;
         for (int i = 0; i < danhSachTaiLieu.length; i++) {
             if (danhSachTaiLieu[i] instanceof Sach && ((Sach) danhSachTaiLieu[i]).getTenTacGia().equalsIgnoreCase(tenTacGia)) {
-                System.out.println("\t\tThông Tin Tài Liệu Sách:");
-                System.out.println("\t\tTên Tác Giả: " + tenTacGia);
-                System.out.println("\t\tMã Tài Liệu: " + danhSachTaiLieu[i].getMaTaiLieu());
-                System.out.println("\t\tTên Nhà Xuất Bản: " + danhSachTaiLieu[i].getTenNhaXuatBan());
-                System.out.println("\t\tSố Bản Phát Hành: " + danhSachTaiLieu[i].getSoBanPhatHanh());
+                System.out.println("\t\tThong Tin Tai Lieu Sach:");
+                System.out.println("\t\tTen Tac Gia: " + tenTacGia);
+                System.out.println("\t\tMa Tai Lieu: " + danhSachTaiLieu[i].getMaTaiLieu());
+                System.out.println("\t\tTen Nha Xuat Ban: " + danhSachTaiLieu[i].getTenNhaXuatBan());
+                System.out.println("\t\tSo Ban Phat Hanh: " + danhSachTaiLieu[i].getSoBanPhatHanh());
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("Không tìm thấy tài liệu của tác giả " + tenTacGia);
+            System.out.println("Khong tim thay tac gia " + tenTacGia);
         }
     }
 
@@ -213,32 +230,32 @@ public class QuanLySach {
             if (danhSachTaiLieu[i] instanceof Sach) {
                 Sach sach = (Sach) danhSachTaiLieu[i];
                 if (sach.getTenTacGia().toLowerCase().contains(tenTacGiaCanTim.toLowerCase())) {
-                    System.out.println("Tài liệu tác giả gần đúng: ");
-                    System.out.println("\tTên tác giả: " + sach.getTenTacGia());
-                    System.out.println("\tTên sách: " + sach.getTenSach());
-                    System.out.println("\tSố trang: " + sach.getSoTrang());
+                    System.out.println("Tai Lieu Tac Gia Gan Dung: ");
+                    System.out.println("\tTen Tac Gia: " + sach.getTenTacGia());
+                    System.out.println("\tTen Sach: " + sach.getTenSach());
+                    System.out.println("\tSo Trang: " + sach.getSoTrang());
                     found = true;
                 }
             } else if (danhSachTaiLieu[i] instanceof Bao) {
                 Bao bao = (Bao) danhSachTaiLieu[i];
                 if (bao.getTenTacGia().toLowerCase().contains(tenTacGiaCanTim.toLowerCase())) {
-                    System.out.println("Tài liệu tác giả gần đúng: ");
-                    System.out.println("\tTên tác giả: " + bao.getTenTacGia());
-                    System.out.println("\tNgày phát hành: " + bao.getNgayPhatHanh());
+                    System.out.println("Tai lieu tac gia dan dung: ");
+                    System.out.println("\tTen tac gia: " + bao.getTenTacGia());
+                    System.out.println("\tNgay phat hanh: " + bao.getNgayPhatHanh());
                     found = true;
                 }
             } else if (danhSachTaiLieu[i] instanceof TapChi) {
                 TapChi tapChi = (TapChi) danhSachTaiLieu[i];
                 if (tapChi.getTenTacGia().toLowerCase().contains(tenTacGiaCanTim.toLowerCase())) {
-                    System.out.println("Tài liệu tác giả gần đúng: ");
-                    System.out.println("\tTên tác giả: " + tapChi.getTenTacGia());
-                    System.out.println("\tSố phát hành: " + tapChi.getSoPhatHanh());
+                    System.out.println("Tai Lieu Tac Gia Gan Dung: ");
+                    System.out.println("\tTen Tac Gia: " + tapChi.getTenTacGia());
+                    System.out.println("\tSo Phat Hanh: " + tapChi.getSoPhatHanh());
                     found = true;
                 }
             }
         }
         if (!found) {
-            System.out.println("Không tìm thấy tài liệu nào của tác giả gần đúng '" + tenTacGiaCanTim + "'");
+            System.out.println("Khong tim thay tai lieu tac gia nao gan dung '" + tenTacGiaCanTim + "'");
         }
     }
 
@@ -269,7 +286,7 @@ public class QuanLySach {
                     }
                 }
                 break;
-            case "tap chi":
+            case "tapchi":
                 System.out.println("Danh sach tai lieu loai Tap Chi:");
                 for (TaiLieu tl : danhSachTaiLieu) {
                     if (tl instanceof TapChi) {
