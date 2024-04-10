@@ -3,42 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ttltm;
-
 import java.util.Scanner;
-
 /**
  *
  * @author Peggy
  */
 public class bai9 {
+    
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập số tự nhiên n = ");
         int n = scanner.nextInt();
-        System.out.print("Số Fibonacci thứ n là: ");
+        System.out.print("Số Fibonacci thứ n là:");
         System.out.println(fibonacci(n));
         System.out.print("Các số fibonacci nhỏ hơn n và là số nguyên tố: ");
-        for(int i = 0; fibonacci(i) < n; i++)
-        {
+        int i = 0;
+        while (fibonacci(i) < n) {
             int fi = fibonacci(i);
-            if (soNguyenTo(fi)) {
+            if (isPrimeNumber(fi)) {
                 System.out.print(fi + " ");
             }
+            i++;
         }
     }
-
     public static int fibonacci(int n) {
         if (n < 1) {
             return -1;
         } else if (n == 1 || n == 2) {
             return n;
         } else {
-            return fibonacci(n - 1) + fibonacci(n - 2); // 6
+            return fibonacci(n - 1) + fibonacci(n - 2);
         }
     }
-
-    public static boolean soNguyenTo(int n) {
+    public static boolean isPrimeNumber(int n) {
         if (n < 2) {
             return false;
         }
